@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-column justify-content-center align-items-center w-100 h-100vh">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <img src="assets/images/fict_logo.png" class="img img-fluid" />
+          <mat-form-field appearance="legacy">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Please enter your full name" type="text" formControlName="name">
+            <mat-error *ngIf="registerForm.get('name').hasError('required')">
+              Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Please enter your email address" type="email" formControlName="email"
+            [errorStateMatcher]="matcher">
+            <mat-error *ngIf="registerForm.get('email').hasError('email') && !registerForm.get('email').hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="registerForm.get('email').hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Please enter your password" type="password" formControlName="password">
+            <mat-error *ngIf="registerForm.get('password').hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Study</mat-label>
+            <mat-select [(value)]="study">
+              <mat-option value="KNI">KNI</mat-option>
+              <mat-option value="IKT">IKT</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Index</mat-label>
+            <input matInput placeholder="Please enter your index number" type="number" formControlName="index">
+            <mat-error *ngIf="registerForm.get('index').hasError('required')">
+              Index is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" class="submit-btn" type="submit" [disabled]="displaySpinner">
+            <span [ngClass]="{'hide' : displaySpinner}">Register</span>
+            <i class="fas fa-spinner fa-spin" [ngClass]="{'hide' : !displaySpinner}"></i>
+          </button>
+          <p>Already have an account? Please log in <a routerLink="/login">here</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

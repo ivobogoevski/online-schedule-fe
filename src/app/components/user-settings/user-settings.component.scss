@@ -1,0 +1,65 @@
+.user-profile{
+  background-color: #fff;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 4px 3px -1px rgba(0,0,0,0.1);
+  padding: 80px 15px;
+  margin: 60px auto;
+  font-size: 19px;
+
+  &.edit-mode{
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .user-image{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    border: 3px solid;
+    color: #13a89e;
+    height: 120px;
+    border-radius: 100%;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .user-name{
+    color: #13a89e;
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  mat-form-field{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  p{
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .submit-btn{
+    position: relative;
+    padding: 0 25px;
+
+    i{
+      position: absolute;
+      top: calc(50% - 7px);
+      left: calc(50% - 7px);
+    }
+
+    .hide{
+      opacity: 0;
+    }
+  }
+
+  .mat-stroked-button{
+    line-height: 36px;
+  }
+}

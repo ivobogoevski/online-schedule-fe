@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row" @myInsertRemoveTrigger>
+    <div class="col-12 mt-5 mb-5">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Monday">
+          <div class="row">
+            <div class="col-md-6 col-lg-4" *ngFor="let class of schedule.Monday">
+              <mat-card class="mb-4">
+                <mat-card-content>
+                  <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Tuesday">
+          <div class="row">
+            <div class="col-md-6 col-lg-4" *ngFor="let class of schedule.Tuesday">
+              <mat-card class="mb-4">
+                <mat-card-content>
+                  <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Wednesday">
+          <div class="row">
+            <div class="col-md-6 col-lg-4" *ngFor="let class of schedule.Wednesday">
+              <mat-card class="mb-4">
+                <mat-card-content>
+                  <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Thursday">
+          <div class="row">
+            <div class="col-md-6 col-lg-4" *ngFor="let class of schedule.Thursday">
+              <mat-card class="mb-4">
+                <mat-card-content>
+                  <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Friday">
+          <div class="row">
+            <div class="col-md-6 col-lg-4" *ngFor="let class of schedule.Friday">
+              <mat-card class="mb-4">
+                <mat-card-content>
+                  <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#2199e8" type="ball-fall"></ngx-spinner>
+  </div>
+</div>

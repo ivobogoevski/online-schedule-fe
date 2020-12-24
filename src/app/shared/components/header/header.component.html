@@ -1,0 +1,48 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 logo">
+        <img class="img img-fluid" src="assets/images/fict_logo.png" />
+        <div class="navbar-light navbar-expand-md">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <nav class="navbar navbar-expand-md">
+          <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto mt-2 mt-md-0">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/classes" routerLinkActive="active">Classes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/schedule" routerLinkActive="active">Schedule</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/exams" routerLinkActive="active">Exams</a>
+              </li>
+              <li>
+                <a class="nav-link" routerLink="/colloquies" routerLinkActive="active">Colloquies</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profile
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="/settings" routerLinkActive="active">Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" routerLink="/login" (click)="logOut()">Log Out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<router-outlet></router-outlet>

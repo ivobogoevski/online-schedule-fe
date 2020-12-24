@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row mt-5 mb-5" @myInsertRemoveTrigger>
+    <ng-container *ngFor="let class of classes">
+      <div class="col-md-6 col-lg-4" *ngIf="class.Exam">
+        <mat-card class="mb-4">
+          <mat-card-content>
+            <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+            <div class="exam-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
+            <div class="exam-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Exam.Classroom}}</div>
+            <div class="exam-time"><i class="fas fa-clock"></i>{{class.Exam.Date}}</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

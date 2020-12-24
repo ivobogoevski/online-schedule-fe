@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/css/font-awesome.min.css';
+html, body { height: 100%; }
+
+body.mat-typography{
+  background-color: #f6f6f6;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.h-100vh{
+  height: 100vh;
+}
+
+*:focus{
+  outline: none !important;
+}
+
+a{
+  color: #36b5ad;
+}
+
+/* Define custom palette to change angular material primary color */
+$md-mcgpalette: (
+  50 : #e3f5f3,
+  100 : #b8e5e2,
+  200 : #89d4cf,
+  300 : #5ac2bb,
+  400 : #36b5ad,
+  500 : #13a89e,
+  600 : #11a096,
+  700 : #0e978c,
+  800 : #0b8d82,
+  900 : #067d70,
+  A100 : #abfff5,
+  A200 : #78ffef,
+  A400 : #45ffe9,
+  A700 : #2bffe6,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+  )
+);
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-app-primary: mat-palette($md-mcgpalette);
+$my-app-accent:  mat-palette($mat-green);
+$my-app-warn:    mat-palette($mat-red);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
+/* ===== END DEFINE COLOR VARIABLES ===== */
+
+.snack-success {
+  color: #1bd446 !important;
+}
+
+.snack-error {
+  color: #f13b3b !important;
+}
+
+.mat-tab-body-content{
+  overflow: hidden !important;
+  margin-top: 20px;
+}
