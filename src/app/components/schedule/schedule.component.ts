@@ -2,8 +2,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ISchedule } from 'src/app/shared/models/schedule.model';
-import { ClassesService } from '../classes/services/classes.service';
 import * as moment from 'moment';
+import { ClassesService } from 'src/app/shared/services/classes.service';
 
 @Component({
   selector: 'app-schedule',
@@ -41,24 +41,59 @@ export class ScheduleComponent implements OnInit {
           switch (moment(+e.ClassDate).isoWeekday()) {
             case 1:
               e.ClassDate = moment(+e.ClassDate).format('HH:mm');
-              this.schedule.Monday.push(e);
+              e.Type = 'Lecture';
+              this.schedule.Monday.push({...e});
               break;
             case 2:
               e.ClassDate = moment(+e.ClassDate).format('HH:mm');
-              this.schedule.Tuesday.push(e);
+              e.Type = 'Lecture';
+              this.schedule.Tuesday.push({...e});
               break;
             case 3:
               e.ClassDate = moment(+e.ClassDate).format('HH:mm');
-              this.schedule.Wednesday.push(e);
+              e.Type = 'Lecture';
+              this.schedule.Wednesday.push({...e});
               break;
             case 4:
               e.ClassDate = moment(+e.ClassDate).format('HH:mm');
-              this.schedule.Thursday.push(e);
+              e.Type = 'Lecture';
+              this.schedule.Thursday.push({...e});
               break;
             case 5:
               e.ClassDate = moment(+e.ClassDate).format('HH:mm');
-              this.schedule.Thursday.push(e);
+              e.Type = 'Lecture';
+              this.schedule.Thursday.push({...e});
               break;
+          }
+
+          if(e.ExerciseDate) {
+            switch (moment(+e.ExerciseDate).isoWeekday()) {
+              case 1:
+                e.ExerciseDate = moment(+e.ExerciseDate).format('HH:mm');
+                e.Type = 'Exercise';
+                this.schedule.Monday.push(e);
+                break;
+              case 2:
+                e.ExerciseDate = moment(+e.ExerciseDate).format('HH:mm');
+                e.Type = 'Exercise';
+                this.schedule.Tuesday.push(e);
+                break;
+              case 3:
+                e.ExerciseDate = moment(+e.ExerciseDate).format('HH:mm');
+                e.Type = 'Exercise';
+                this.schedule.Wednesday.push(e);
+                break;
+              case 4:
+                e.ExerciseDate = moment(+e.ExerciseDate).format('HH:mm');
+                e.Type = 'Exercise';
+                this.schedule.Thursday.push(e);
+                break;
+              case 5:
+                e.ExerciseDate = moment(+e.ExerciseDate).format('HH:mm');
+                e.Type = 'Exercise';
+                this.schedule.Thursday.push(e);
+                break;
+            }
           }
         });
         this.spinner.hide();

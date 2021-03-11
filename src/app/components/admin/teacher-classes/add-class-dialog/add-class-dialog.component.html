@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Add New Class</h1>
+<form [formGroup]="classFormGroup" (ngSubmit)="onSubmit()">
+<div mat-dialog-content>
+    <mat-form-field appearance="legacy">
+      <mat-label>Code</mat-label>
+      <input matInput placeholder="Please enter the class code" type="text" formControlName="Code">
+      <mat-error *ngIf="classFormGroup.get('Code').hasError('required')">
+        Code is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Class</mat-label>
+      <input matInput placeholder="Please enter the class name" type="text" formControlName="Name">
+      <mat-error *ngIf="classFormGroup.get('Name').hasError('required')">
+        Class is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Study</mat-label>
+      <input matInput placeholder="Please enter the study" type="text" formControlName="Study">
+      <mat-error *ngIf="classFormGroup.get('Study').hasError('required')">
+        Study is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Semester</mat-label>
+      <input matInput placeholder="Please enter semester" type="number" min="1" formControlName="Semester">
+      <mat-error *ngIf="classFormGroup.get('Semester').hasError('min')">
+        Semester should be <strong>greater than 0</strong>
+      </mat-error>
+      <mat-error *ngIf="classFormGroup.get('Semester').hasError('required')">
+        Semester is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Classroom</mat-label>
+      <input matInput placeholder="Please enter the classroom" type="text" formControlName="Classroom">
+      <mat-error *ngIf="classFormGroup.get('Classroom').hasError('required')">
+        Classroom is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Class date and time</mat-label>
+      <input matInput [owlDateTime]="dt1" placeholder="Select the class date and time" formControlName="ClassDate">
+      <span [owlDateTimeTrigger]="dt1"><i class="fa fa-calendar"></i></span>
+      <owl-date-time #dt1></owl-date-time>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" class="cancel-btn" type="button" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" class="submit-btn mr-2 mb-2" type="submit" [disabled]="displaySpinner">
+    <span [ngClass]="{'hide' : displaySpinner}">Save</span>
+    <i class="fas fa-spinner fa-spin" [ngClass]="{'hide' : !displaySpinner}"></i>
+  </button>
+</div>
+</form>

@@ -7,9 +7,9 @@ import {
 } from '@angular/cdk/drag-drop';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { ClassesService } from './services/classes.service';
 import { forkJoin, Observable } from 'rxjs';
 import { NgxSpinnerService } from "ngx-spinner";
+import { ClassesService } from 'src/app/shared/services/classes.service';
 
 @Component({
   selector: 'app-classes',

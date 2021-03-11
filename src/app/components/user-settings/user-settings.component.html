@@ -8,8 +8,13 @@
           </div>
           <div class="user-name mb-5">{{user.Name}}</div>
           <div class="user-email mb-2">Email: {{user.Email}}</div>
-          <div class="user-study mb-2">Study: {{user.Study}}</div>
-          <div class="user-index mb-5">Index Number: {{user.IndexNumber}}</div>
+          <ng-container *ngIf="userType === 1">
+            <div class="user-study mb-2">Study: {{user.Study}}</div>
+            <div class="user-index mb-5">Index Number: {{user.IndexNumber}}</div>
+          </ng-container>
+          <ng-container *ngIf="userType === 2">
+            <div class="user-index mb-5">Office: {{user.Office}}</div>
+          </ng-container>
           <div class="user-buttons">
             <button mat-raised-button color="primary" class="edit-btn mr-2 mb-2" (click)="enableEditMode()">
               Edit
@@ -39,18 +44,27 @@
                 Email is <strong>required</strong>
               </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="legacy">
-              <mat-label>Study</mat-label>
-              <mat-select [(value)]="study">
-                <mat-option value="KNI">KNI</mat-option>
-                <mat-option value="IKT">IKT</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="legacy">
-              <mat-label>Index</mat-label>
-              <input matInput placeholder="Please enter your index number" type="number" formControlName="index">
-              <mat-error *ngIf="userForm.get('index').hasError('required')">
-                Index is <strong>required</strong>
+            <ng-container *ngIf="userType === 1">
+              <mat-form-field appearance="legacy">
+                <mat-label>Study</mat-label>
+                <mat-select [(value)]="user.Study">
+                  <mat-option value="KNI">KNI</mat-option>
+                  <mat-option value="IKT">IKT</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="legacy">
+                <mat-label>Index</mat-label>
+                <input matInput placeholder="Please enter your index number" type="number" formControlName="index">
+                <mat-error *ngIf="userForm.get('index').hasError('required')">
+                  Index is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </ng-container>
+            <mat-form-field *ngIf="userType === 2" appearance="legacy">
+              <mat-label>Office</mat-label>
+              <input matInput placeholder="Please enter office" type="text" formControlName="office">
+              <mat-error *ngIf="userForm.get('office').hasError('required')">
+                Office is <strong>required</strong>
               </mat-error>
             </mat-form-field>
             <button mat-raised-button color="primary" class="submit-btn mr-2 mb-2" type="submit" [disabled]="displaySpinner">

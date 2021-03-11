@@ -1,0 +1,40 @@
+form{
+  background-color: #fff;
+  width: 400px;
+  max-width: 100%;
+  box-shadow: 0 4px 3px -1px rgba(0,0,0,0.1);
+  padding: 30px 15px;
+
+  .img{
+    width: 200px;
+    margin: auto;
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  mat-form-field{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  p{
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+
+  .submit-btn{
+    position: relative;
+    padding: 0 25px;
+
+    i{
+      position: absolute;
+      top: calc(50% - 7px);
+      left: calc(50% - 7px);
+    }
+
+    .hide{
+      opacity: 0;
+    }
+  }
+}

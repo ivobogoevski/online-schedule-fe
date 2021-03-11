@@ -1,0 +1,37 @@
+h2{
+  margin-bottom: 10px;
+  color: #13a89e;
+  border-bottom: 1px solid;
+  font-size: 26px;
+
+  button {
+    margin-top: -10px;
+  }
+}
+
+mat-card{
+  cursor: pointer;
+
+  mat-card-content{
+
+    h2{
+      font-size: 20px;
+    }
+
+    .fa-book{
+      margin-right: 5px;
+      font-size: 17px;
+    }
+
+    .fa-user, .fa-map-marker-alt, .fa-clock{
+      width: 18px;
+      font-size: 15px;
+    }
+
+    .exam-teacher, .exam-classroom, .exam-time{
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #13a89e;
+    }
+  }
+}

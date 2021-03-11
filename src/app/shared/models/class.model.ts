@@ -9,6 +9,9 @@ export interface IClass {
   Teacher?: ITeacher;
   Classroom?: string;
   ClassDate?: string;
+  ExerciseDate?: string;
+  ExerciseRoom?: string;
   Colloquium?: IExam;
   Exam?: IExam;
+  Type?: string;
 }
