@@ -1,6 +1,7 @@
 h2{
   margin-bottom: 10px;
   color: #13a89e;
+  border-bottom: 1px solid;
 }
 
 .fa-book{
@@ -11,6 +12,16 @@ h2{
 .fa-user, .fa-map-marker-alt, .fa-clock{
   width: 18px;
   font-size: 15px;
+}
+
+.fa-chalkboard-teacher{
+  width: 18px;
+  font-size: 12px;
+}
+
+.fa-laptop-code{
+  width: 18px;
+  font-size: 13px;
 }
 
 .schedule-teacher, .schedule-classroom, .schedule-time{

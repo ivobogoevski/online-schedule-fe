@@ -16,6 +16,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ClassesComponent } from './components/classes/classes.component';
@@ -25,6 +27,16 @@ import { ColloquiesComponent } from './components/colloquies/colloquies.componen
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { AdminComponent } from './components/admin/admin.component';
+import { LoginComponent as AdminLoginComponent } from './components/admin/login/login.component';
+import { DashboardComponent as AdminDashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { TeacherClassesComponent } from './components/admin/teacher-classes/teacher-classes.component';
+import { TeacherExamsComponent } from './components/admin/teacher-exams/teacher-exams.component';
+import { TeacherColloquiesComponent } from './components/admin/teacher-colloquies/teacher-colloquies.component';
+import { MomentDatePipe } from './shared/pipes/moment-date.pipe';
+import { EditClassComponent } from './components/admin/teacher-classes/edit-class/edit-class.component';
+import { AddClassDialogComponent } from './components/admin/teacher-classes/add-class-dialog/add-class-dialog.component';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 
 @NgModule({
   declarations: [
@@ -38,6 +50,15 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ExamsComponent,
     ColloquiesComponent,
     UserSettingsComponent,
+    AdminComponent,
+    AdminLoginComponent,
+    AdminDashboardComponent,
+    TeacherClassesComponent,
+    TeacherExamsComponent,
+    TeacherColloquiesComponent,
+    MomentDatePipe,
+    EditClassComponent,
+    AddClassDialogComponent
   ],
   imports: [
     FormsModule,
@@ -54,7 +75,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MatTabsModule,
     MatSelectModule,
     DragDropModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatRippleModule,
+    MatDialogModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

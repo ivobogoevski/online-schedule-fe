@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row mt-5 mb-5" @myInsertRemoveTrigger>
+    <div class="col-12">
+      <h2>Your Classes <button class="float-right" mat-raised-button (click)="openNewClassDialog()">Add New</button></h2>
+    </div>
+    <ng-container *ngFor="let class of classes">
+      <div class="col-md-6 col-lg-4">
+        <mat-card class="mb-4" matRipple [routerLink]="class.Code">
+          <mat-card-content>
+            <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+            <div class="exam-teacher"><i class="fas fa-user"></i>{{class.Code}}</div>
+            <div class="exam-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
+            <div class="exam-time"><i class="fas fa-clock"></i>{{class.ClassDate | date:'EEEE HH:MM'}}</div>
+          </mat-card-content>
+          <mat-card-footer></mat-card-footer>
+        </mat-card>
+      </div>
+    </ng-container>
+  </div>
+</div>

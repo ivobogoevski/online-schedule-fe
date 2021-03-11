@@ -53,11 +53,11 @@ export class PasswordMatch implements ErrorStateMatcher {
 })
 export class UserSettingsComponent implements OnInit {
   user;
+  userType;
   editMode = false;
   changePasswordMode = false;
 
-  userForm;
-  study;
+  userForm: FormGroup;
 
   changePasswordForm = new FormGroup({
     password: new FormControl('', Validators.required),
@@ -79,7 +79,7 @@ export class UserSettingsComponent implements OnInit {
     this.setUserInfo();
   }
 
-  enableEditMode(){
+  enableEditMode() {
     this.editMode = true;
     this.userForm = new FormGroup({
       name: new FormControl(this.user.Name, Validators.required),
@@ -87,19 +87,61 @@ export class UserSettingsComponent implements OnInit {
         Validators.required,
         Validators.email,
       ]),
-      index: new FormControl(this.user.IndexNumber, Validators.required),
     });
+    if (this.userType === 1) {
+      this.userForm.addControl(
+        'index',
+        new FormControl(this.user.IndexNumber, Validators.required)
+      );
+    } else if (this.userType === 2) {
+      this.userForm.addControl(
+        'office',
+        new FormControl(this.user.Office, Validators.required)
+      );
+    }
   }
 
   onSubmit() {
     if (this.userForm.valid) {
       this.displaySpinner = true;
-      this.authService
-        .update(
+      if (this.userType === 1) {
+        this.authService
+          .update(
+            this.userForm.get('name').value,
+            this.userForm.get('email').value,
+            this.userForm.get('index').value,
+            this.user.Study
+          )
+          .subscribe(
+            (res) => {
+              this.snackBar.open(
+                'Information has been successfully updated.',
+                null,
+                {
+                  duration: 3000,
+                  panelClass: 'snack-success',
+                }
+              );
+              localStorage.setItem('os_auth', res.token);
+              localStorage.setItem('os_auth_refresh', res.refreshToken);
+              this.displaySpinner = false;
+              this.setUserInfo();
+              this.editMode = false;
+            },
+            (error) => {
+              this.snackBar.open(error.error.message, null, {
+                duration: 3000,
+                panelClass: 'snack-error',
+              });
+              this.displaySpinner = false;
+            }
+          );
+      } else if(this.userType === 2) {
+        this.authService
+        .teacherUpdate(
           this.userForm.get('name').value,
           this.userForm.get('email').value,
-          this.userForm.get('index').value,
-          this.study
+          this.userForm.get('office').value
         )
         .subscribe(
           (res) => {
@@ -125,13 +167,15 @@ export class UserSettingsComponent implements OnInit {
             this.displaySpinner = false;
           }
         );
+      }
     }
   }
 
   changePassword() {
     if (
       this.changePasswordForm.valid &&
-      this.changePasswordForm.get('confirmPassword').value === this.changePasswordForm.get('newPassword').value
+      this.changePasswordForm.get('confirmPassword').value ===
+        this.changePasswordForm.get('newPassword').value
     ) {
       this.displaySpinner = true;
       this.authService
@@ -168,10 +212,15 @@ export class UserSettingsComponent implements OnInit {
 
   setUserInfo() {
     this.user = jwt_decode(localStorage.getItem('os_auth'));
-    this.study = this.user.Study;
+    const rt: any = jwt_decode(localStorage.getItem('os_auth_refresh'));
+    if (this.user.IndexNumber && rt.Type === '1') {
+      this.userType = 1;
+    } else if (this.user.Office && rt.Type === '0') {
+      this.userType = 2;
+    }
   }
 
-  cancelChangePassword(){
+  cancelChangePassword() {
     this.changePasswordMode = false;
     this.changePasswordForm.reset();
   }

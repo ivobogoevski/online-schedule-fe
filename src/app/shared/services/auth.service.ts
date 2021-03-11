@@ -29,6 +29,14 @@ export class AuthService {
     return this.http.post<any>(`${apiEndPoint}/auth/login`, body);
   }
 
+  teacherLogin(email, pass) {
+    const body = {
+      Email: email,
+      Password: pass
+    };
+    return this.http.post<any>(`${apiEndPoint}/auth/teacher/login`, body);
+  }
+
   update(name, email, index, study){
     const body = {
       Name: name,
@@ -38,6 +46,15 @@ export class AuthService {
     };
 
     return this.http.put<any>(`${apiEndPoint}/auth/user`, body);
+  }
+
+  teacherUpdate(name, email, office) {
+    const body = {
+      Name: name,
+      Email: email,
+      Office: office
+    };
+    return this.http.put<any>(`${apiEndPoint}/auth/teacher`, body);
   }
 
   changePassword(password, newPassword){
