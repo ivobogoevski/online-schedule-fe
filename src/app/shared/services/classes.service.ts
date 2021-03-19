@@ -1,35 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IClass } from 'src/app/shared/models/class.model';
-import { apiEndPoint } from '../constants';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClassesService {
 
+  apiEndPoint = environment.api;
+
   constructor(private http: HttpClient) { }
 
-  getAllClasses(){
-    return this.http.get<IClass[]>(`${apiEndPoint}/student/classes/available`);
+  getAllClasses(): Observable<IClass[]> {
+    return this.http.get<IClass[]>(`${this.apiEndPoint}/student/classes/available`);
   }
 
-  getStudentClasses(){
-    return this.http.get<IClass[]>(`${apiEndPoint}/student/classes`);
+  getStudentClasses(): Observable<IClass[]> {
+    return this.http.get<IClass[]>(`${this.apiEndPoint}/student/classes`);
   }
 
-  assignClasses(classes){
+  assignClasses(classes): Observable<any>{
     const body = {
       classes
     };
-    return this.http.post<any>(`${apiEndPoint}/student/assign/classes`, body);
+    return this.http.post<any>(`${this.apiEndPoint}/student/assign/classes`, body);
   }
 
-  getTeacherClasses(){
-    return this.http.get<IClass[]>(`${apiEndPoint}/teacher/classes`);
+  getTeacherClasses(): Observable<IClass[]> {
+    return this.http.get<IClass[]>(`${this.apiEndPoint}/teacher/classes`);
   }
 
-  getClassByCode(code: string){
-    return this.http.get<IClass>(`${apiEndPoint}/classes/${code}`);
+  getClassByCode(code: string) : Observable<IClass>{
+    return this.http.get<IClass>(`${this.apiEndPoint}/classes/${code}`);
   }
 }

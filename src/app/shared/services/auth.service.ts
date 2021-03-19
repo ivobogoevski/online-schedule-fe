@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { apiEndPoint } from '../constants';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  apiEndPoint = environment.api;
 
   constructor(private http: HttpClient) { }
 
@@ -18,26 +20,26 @@ export class AuthService {
       Study: study,
       Index: index
     };
-    return this.http.post<any>(`${apiEndPoint}/auth/register`, body);
+    return this.http.post<any>(`${this.apiEndPoint}/auth/register`, body);
   }
 
-  login(email, pass){
+  login(email, pass): Observable<any>{
     const body = {
       Email: email,
       Password: pass
     };
-    return this.http.post<any>(`${apiEndPoint}/auth/login`, body);
+    return this.http.post<any>(`${this.apiEndPoint}/auth/login`, body);
   }
 
-  teacherLogin(email, pass) {
+  teacherLogin(email, pass): Observable<any> {
     const body = {
       Email: email,
       Password: pass
     };
-    return this.http.post<any>(`${apiEndPoint}/auth/teacher/login`, body);
+    return this.http.post<any>(`${this.apiEndPoint}/auth/teacher/login`, body);
   }
 
-  update(name, email, index, study){
+  update(name, email, index, study): Observable<any>{
     const body = {
       Name: name,
       Email: email,
@@ -45,28 +47,28 @@ export class AuthService {
       Study: study
     };
 
-    return this.http.put<any>(`${apiEndPoint}/auth/user`, body);
+    return this.http.put<any>(`${this.apiEndPoint}/auth/user`, body);
   }
 
-  teacherUpdate(name, email, office) {
+  teacherUpdate(name, email, office): Observable<any> {
     const body = {
       Name: name,
       Email: email,
       Office: office
     };
-    return this.http.put<any>(`${apiEndPoint}/auth/teacher`, body);
+    return this.http.put<any>(`${this.apiEndPoint}/auth/teacher`, body);
   }
 
-  changePassword(password, newPassword){
+  changePassword(password, newPassword): Observable<any> {
     const body = {
       Password: password,
       NewPassword: newPassword
     };
 
-    return this.http.put<any>(`${apiEndPoint}/auth/change-password`, body);
+    return this.http.put<any>(`${this.apiEndPoint}/auth/change-password`, body);
   }
 
-  refreshToken(){
-    return this.http.post<any>(`${apiEndPoint}/auth/refresh-token`, {RefreshToken: localStorage.getItem('os_auth_refresh')});
+  refreshToken(): Observable<any>{
+    return this.http.post<any>(`${this.apiEndPoint}/auth/refresh-token`, {RefreshToken: localStorage.getItem('os_auth_refresh')});
   }
 }
