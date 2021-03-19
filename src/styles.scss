@@ -78,3 +78,10 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   overflow: hidden !important;
   margin-top: 20px;
 }
+
+.date-time-toggle {
+  position: absolute;
+  right: 0;
+  left: 0;
+  text-align: right;
+}

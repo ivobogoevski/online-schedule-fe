@@ -41,8 +41,9 @@
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Class date and time</mat-label>
-      <input matInput [owlDateTime]="dt1" placeholder="Select the class date and time" formControlName="ClassDate">
-      <span [owlDateTimeTrigger]="dt1"><i class="fa fa-calendar"></i></span>
+      <input matInput [owlDateTime]="dt1" readonly placeholder="Select the class date and time"
+      formControlName="ClassDate | date:'EEEE HH:MM'">
+      <span [owlDateTimeTrigger]="dt1" class="date-time-toggle"><i class="fa fa-calendar"></i></span>
       <owl-date-time #dt1></owl-date-time>
     </mat-form-field>
 </div>
