@@ -14,16 +14,19 @@
           <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto mt-2 mt-md-0">
               <li class="nav-item">
-                <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+                <a class="nav-link" routerLink="/superadmin/dashboard" routerLinkActive="active">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/admin/classes" routerLinkActive="active">Classes</a>
+                <a class="nav-link" routerLink="/superadmin/teachers" routerLinkActive="active">Teachers</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/admin/settings" routerLinkActive="active">Settings</a>
+                <a class="nav-link" routerLink="/superadmin/students" routerLinkActive="active">Students</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/admin/login" (click)="logOut()">Log Out</a>
+                <a class="nav-link" routerLink="/superadmin/classes" routerLinkActive="active">Classes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/superadmin/login" (click)="logOut()">Log Out</a>
               </li>
             </ul>
           </div>

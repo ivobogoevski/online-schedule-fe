@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{dialogTitle}}</h1>
+<form [formGroup]="examFormGroup" (ngSubmit)="onSubmit()">
+<div mat-dialog-content>
+    <mat-form-field appearance="legacy">
+      <mat-label>Classroom</mat-label>
+      <input matInput placeholder="Please enter the classroom" type="text" formControlName="Classroom">
+      <mat-error *ngIf="examFormGroup.get('Classroom').hasError('required')">
+        Classroom is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Date and time</mat-label>
+      <input matInput [owlDateTime]="dt2" readonly hidden placeholder="Select date and time"
+      formControlName="ExamDate">
+      <input matInput readonly placeholder="Select date and time"
+      [value]="examFormGroup.get('ExamDate').value | date:'dd/MM/yyyy HH:mm'">
+      <span [owlDateTimeTrigger]="dt2" class="date-time-toggle"><i class="fa fa-calendar"></i></span>
+      <owl-date-time #dt2></owl-date-time>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Notification</mat-label>
+      <textarea matInput placeholder="Leave empty if you don't want to send notification." formControlName="Notification" maxlength="255"></textarea>
+      <mat-error *ngIf="examFormGroup.get('Notification').hasError('maxLength')">
+        Maximum <strong>255</strong> characters
+      </mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" class="cancel-btn" type="button" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" class="submit-btn mr-2 mb-2" type="submit" [disabled]="displaySpinner">
+    <span [ngClass]="{'hide' : displaySpinner}">Save</span>
+    <i class="fas fa-spinner fa-spin" [ngClass]="{'hide' : !displaySpinner}"></i>
+  </button>
+</div>
+</form>

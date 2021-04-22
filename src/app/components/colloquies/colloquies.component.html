@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row mt-5 mb-5" @myInsertRemoveTrigger>
+<div class="container" @myInsertRemoveTrigger>
+  <div class="row mt-5 mb-5">
     <ng-container *ngFor="let class of classes">
       <div class="col-md-6 col-lg-4" *ngIf="class.Exam">
         <mat-card class="mb-4">
@@ -7,10 +7,17 @@
             <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
             <div class="exam-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
             <div class="exam-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Exam.Classroom}}</div>
-            <div class="exam-time"><i class="fas fa-clock"></i>{{class.Exam.Date | date:'dd/MM/yyyy HH:MM'}}</div>
+            <div class="exam-time"><i class="fas fa-clock"></i>{{class.Exam.ExamDate | date:'dd/MM/yyyy HH:mm'}}</div>
           </mat-card-content>
         </mat-card>
       </div>
     </ng-container>
+    <ng-container *ngIf="!classes.length && !displaySpinner">
+      <div class="col-12 text-center">
+        <h1>No colloquies to display</h1>
+        <h3>Either because there are no colloquies scheduled for your classes yet or because you didn't select any class yet.</h3>
+      </div>
+    </ng-container>
   </div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#2199e8" type="ball-fall"></ngx-spinner>
 </div>

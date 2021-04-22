@@ -62,7 +62,7 @@ export class ScheduleComponent implements OnInit {
             case 5:
               e.ClassDate = moment(+e.ClassDate).format('HH:mm');
               e.Type = 'Lecture';
-              this.schedule.Thursday.push({...e});
+              this.schedule.Friday.push({...e});
               break;
           }
 
@@ -91,7 +91,7 @@ export class ScheduleComponent implements OnInit {
               case 5:
                 e.ExerciseDate = moment(+e.ExerciseDate).format('HH:mm');
                 e.Type = 'Exercise';
-                this.schedule.Thursday.push(e);
+                this.schedule.Friday.push(e);
                 break;
             }
           }

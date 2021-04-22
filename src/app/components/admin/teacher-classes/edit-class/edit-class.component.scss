@@ -1,0 +1,53 @@
+.exams-wrap {
+  margin-bottom: 25px;
+
+  .exam-head {
+    background-color: #13a89e;
+    color: #fff;
+    font-size: 21px;
+    border: 1px solid #13a89e;
+    padding: 10px;
+
+    span {
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+
+  .exams-content {
+    border: 1px solid;
+    border-top: 0;
+    padding: 10px;
+    display: flex;
+    transition: background-color 400ms;
+
+    .exam-date {
+      margin-right: 15px;
+    }
+
+    .exam-room {
+      flex: 1;
+    }
+
+    .exam-actions {
+      display: none;
+
+      i {
+        cursor: pointer;
+        margin-left: 5px;
+      }
+    }
+
+    &:hover {
+      background-color: #fff;
+
+      .exam-expired {
+        display: none;
+      }
+
+      .exam-actions {
+        display: block;
+      }
+    }
+  }
+}

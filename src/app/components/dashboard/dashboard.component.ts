@@ -1,6 +1,10 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { INotification } from 'src/app/shared/models/notification.model';
 import { IPost } from 'src/app/shared/models/post.model';
+import { NotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,30 +21,30 @@ import { IPost } from 'src/app/shared/models/post.model';
 })
 export class DashboardComponent implements OnInit {
 
-  posts: IPost[] = [
-    {
-      Author: 'Ilija Jolevski',
-      Date: 2432434323,
-      Class: 'Objektno Orientirano Programiranje',
-      Content: 'Prviot kolokvium po predmetot Objektno Orientirano Programiranje e zakazan za 11.11.2020. Proverete go vashiot raspored za poveke detali.'
-    },
-    {
-      Author: 'Ilija Jolevski',
-      Date: 2432434323,
-      Class: 'Objektno Orientirano Programiranje',
-      Content: 'Prviot kolokvium po predmetot Objektno Orientirano Programiranje e zakazan za 11.11.2020. Proverete go vashiot raspored za poveke detali.'
-    },
-    {
-      Author: 'Ilija Jolevski',
-      Date: 2432434323,
-      Class: 'Objektno Orientirano Programiranje',
-      Content: 'Prviot kolokvium po predmetot Objektno Orientirano Programiranje e zakazan za 11.11.2020. Proverete go vashiot raspored za poveke detali.'
-    }
-  ];
+  notifications: INotification[] = [];
+  displaySpinner = true;
 
-  constructor() { }
+  constructor(
+    private notifactionService: NotificationService,
+    private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit(): void {
+    this.spinner.show();
+    this.notifactionService.getAllNotifications().subscribe( res => {
+      this.notifications = res;
+      this.displaySpinner = false;
+      this.spinner.hide()
+    },
+    (error) => {
+      this.snackBar.open(error.error.message, null, {
+        duration: 3000,
+        panelClass: 'snack-error',
+      });
+      this.displaySpinner = false;
+      this.spinner.hide();
+    });
   }
 
 }

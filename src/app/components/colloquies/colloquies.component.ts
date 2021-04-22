@@ -1,6 +1,7 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { IClass } from 'src/app/shared/models/class.model';
 import { ExamsService } from 'src/app/shared/services/exams.service';
 
@@ -20,18 +21,21 @@ import { ExamsService } from 'src/app/shared/services/exams.service';
 export class ColloquiesComponent implements OnInit {
 
   classes: IClass[];
-  displaySpinner = false;
+  displaySpinner = true;
 
   constructor(
     private examService: ExamsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
     this.displaySpinner = true;
+    this.spinner.show();
     this.examService.getAll(2).subscribe(res => {
       this.classes = res;
       this.displaySpinner = false;
+      this.spinner.hide();
     },
     (error) => {
       this.snackBar.open(error.error.message, null, {
@@ -39,6 +43,7 @@ export class ColloquiesComponent implements OnInit {
         panelClass: 'snack-error',
       });
       this.displaySpinner = false;
+      this.spinner.hide();
     });
   }
 

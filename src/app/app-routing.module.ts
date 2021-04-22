@@ -15,20 +15,28 @@ import { LoginComponent as AdminLoginComponent } from './components/admin/login/
 import { DashboardComponent as AdminDashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { TeacherAuthGuard } from './core/guards/teacher-auth.guard';
 import { TeacherClassesComponent } from './components/admin/teacher-classes/teacher-classes.component';
-import { TeacherExamsComponent } from './components/admin/teacher-exams/teacher-exams.component';
-import { TeacherColloquiesComponent } from './components/admin/teacher-colloquies/teacher-colloquies.component';
 import { EditClassComponent } from './components/admin/teacher-classes/edit-class/edit-class.component';
+import { ManageClassesComponent } from './components/superadmin/manage-classes/manage-classes.component';
+import { ManageTeachersComponent } from './components/superadmin/manage-teachers/manage-teachers.component';
+import { ManageStudentsComponent } from './components/superadmin/manage-students/manage-students.component';
+import { SuperadminComponent } from './components/superadmin/superadmin.component';
 
 
 const routes: Routes = [
+  {path: 'superadmin/login', component: AdminLoginComponent},
+  {path: 'superadmin', redirectTo: 'superadmin/dashboard', pathMatch: 'full'},
+  {path: 'superadmin', component: SuperadminComponent, children: [
+    {path: 'dashboard', component: AdminDashboardComponent},
+    {path: 'classes', component: ManageClassesComponent, canActivate: [TeacherAuthGuard]},
+    {path: 'teachers', component: ManageTeachersComponent, canActivate: [TeacherAuthGuard]},
+    {path: 'students', component: ManageStudentsComponent, canActivate: [TeacherAuthGuard]}
+  ]},
+  {path: 'admin/login', component: AdminLoginComponent},
   {path: 'admin', redirectTo: 'admin/dashboard', pathMatch: 'full'},
   {path: 'admin', component: AdminComponent, children: [
-    {path: 'login', component: AdminLoginComponent},
-    {path: 'dashboard', component: AdminDashboardComponent, canActivate: [TeacherAuthGuard]},
+    {path: 'dashboard', component: AdminDashboardComponent},
     {path: 'classes', component: TeacherClassesComponent, canActivate: [TeacherAuthGuard]},
     {path: 'classes/:id', component: EditClassComponent, canActivate: [TeacherAuthGuard]},
-    {path: 'exams', component: TeacherExamsComponent, canActivate: [TeacherAuthGuard]},
-    {path: 'colloquies', component: TeacherColloquiesComponent, canActivate: [TeacherAuthGuard]},
     {path: 'settings', component: UserSettingsComponent, canActivate: [TeacherAuthGuard]}
   ]},
   {path: 'login', component: LoginComponent},

@@ -1,0 +1,24 @@
+mat-form-field{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.submit-btn{
+  position: relative;
+  padding: 0 25px;
+  margin-bottom: 0 !important;
+
+  i{
+    position: absolute;
+    top: calc(50% - 7px);
+    left: calc(50% - 7px);
+  }
+
+  .hide{
+    opacity: 0;
+  }
+}
+
+.mat-stroked-button{
+  line-height: 36px;
+}
