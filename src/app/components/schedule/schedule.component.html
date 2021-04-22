@@ -10,8 +10,8 @@
                   <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
                   <div class="schedule-teacher"><i [ngClass]="class.Type === 'Lecture' ? 'fas fa-chalkboard-teacher' : 'fas fa-laptop-code'"></i>{{class.Type}}</div>
                   <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
-                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
-                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Type === 'Lecture' ? class.Classroom : class.ExerciseRoom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.Type === 'Lecture' ? class.ClassDate : class.ExerciseDate}}</div>
                 </mat-card-content>
               </mat-card>
             </div>
@@ -23,9 +23,10 @@
               <mat-card class="mb-4">
                 <mat-card-content>
                   <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i [ngClass]="class.Type === 'Lecture' ? 'fas fa-chalkboard-teacher' : 'fas fa-laptop-code'"></i>{{class.Type}}</div>
                   <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
-                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
-                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Type === 'Lecture' ? class.Classroom : class.ExerciseRoom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.Type === 'Lecture' ? class.ClassDate : class.ExerciseDate}}</div>
                 </mat-card-content>
               </mat-card>
             </div>
@@ -37,9 +38,10 @@
               <mat-card class="mb-4">
                 <mat-card-content>
                   <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i [ngClass]="class.Type === 'Lecture' ? 'fas fa-chalkboard-teacher' : 'fas fa-laptop-code'"></i>{{class.Type}}</div>
                   <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
-                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
-                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Type === 'Lecture' ? class.Classroom : class.ExerciseRoom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.Type === 'Lecture' ? class.ClassDate : class.ExerciseDate}}</div>
                 </mat-card-content>
               </mat-card>
             </div>
@@ -51,9 +53,10 @@
               <mat-card class="mb-4">
                 <mat-card-content>
                   <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
+                  <div class="schedule-teacher"><i [ngClass]="class.Type === 'Lecture' ? 'fas fa-chalkboard-teacher' : 'fas fa-laptop-code'"></i>{{class.Type}}</div>
                   <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
-                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
-                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Type === 'Lecture' ? class.Classroom : class.ExerciseRoom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.Type === 'Lecture' ? class.ClassDate : class.ExerciseDate}}</div>
                 </mat-card-content>
               </mat-card>
             </div>
@@ -65,10 +68,10 @@
               <mat-card class="mb-4">
                 <mat-card-content>
                   <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
-                  <div class="schedule-teacher">{{class.Type}}</div>
+                  <div class="schedule-teacher"><i [ngClass]="class.Type === 'Lecture' ? 'fas fa-chalkboard-teacher' : 'fas fa-laptop-code'"></i>{{class.Type}}</div>
                   <div class="schedule-teacher"><i class="fas fa-user"></i>{{class.Teacher.Name}}</div>
-                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
-                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.ClassDate}}</div>
+                  <div class="schedule-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Type === 'Lecture' ? class.Classroom : class.ExerciseRoom}}</div>
+                  <div class="schedule-time"><i class="fas fa-clock"></i>{{class.Type === 'Lecture' ? class.ClassDate : class.ExerciseDate}}</div>
                 </mat-card-content>
               </mat-card>
             </div>

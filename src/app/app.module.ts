@@ -28,15 +28,19 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { AdminComponent } from './components/admin/admin.component';
-import { LoginComponent as AdminLoginComponent } from './components/admin/login/login.component';
 import { DashboardComponent as AdminDashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { LoginComponent as AdminLoginComponent } from './components/admin/login/login.component';
 import { TeacherClassesComponent } from './components/admin/teacher-classes/teacher-classes.component';
-import { TeacherExamsComponent } from './components/admin/teacher-exams/teacher-exams.component';
-import { TeacherColloquiesComponent } from './components/admin/teacher-colloquies/teacher-colloquies.component';
-import { MomentDatePipe } from './shared/pipes/moment-date.pipe';
 import { EditClassComponent } from './components/admin/teacher-classes/edit-class/edit-class.component';
 import { AddClassDialogComponent } from './components/admin/teacher-classes/add-class-dialog/add-class-dialog.component';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from '@danielmoncada/angular-datetime-picker';
+import { AddExamComponent } from './components/admin/teacher-classes/add-exam/add-exam.component';
+import { ConfirmDialogComponent } from './shared/components/confirm-dialog/confirm-dialog.component';
+import { EditNotificationComponent } from './components/admin/dashboard/edit-notification/edit-notification.component';
+import { SuperadminComponent } from './components/superadmin/superadmin.component';
+import { ManageTeachersComponent } from './components/superadmin/manage-teachers/manage-teachers.component';
+import { ManageStudentsComponent } from './components/superadmin/manage-students/manage-students.component';
+import { ManageClassesComponent } from './components/superadmin/manage-classes/manage-classes.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +55,18 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angul
     ColloquiesComponent,
     UserSettingsComponent,
     AdminComponent,
-    AdminLoginComponent,
     AdminDashboardComponent,
+    AdminLoginComponent,
     TeacherClassesComponent,
-    TeacherExamsComponent,
-    TeacherColloquiesComponent,
-    MomentDatePipe,
     EditClassComponent,
-    AddClassDialogComponent
+    AddClassDialogComponent,
+    AddExamComponent,
+    ConfirmDialogComponent,
+    EditNotificationComponent,
+    SuperadminComponent,
+    ManageTeachersComponent,
+    ManageStudentsComponent,
+    ManageClassesComponent
   ],
   imports: [
     FormsModule,

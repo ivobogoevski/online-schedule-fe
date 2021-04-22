@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row mt-5 mb-5" @myInsertRemoveTrigger>
     <div class="col-12">
-      <h2>Your Classes <button class="float-right" mat-raised-button (click)="openNewClassDialog()">Add New</button></h2>
+      <h2>Your Classes
+        <button class="float-right add-new" mat-raised-button (click)="openNewClassDialog()"><i class="fas fa-plus"></i> Add New</button>
+      </h2>
     </div>
     <ng-container *ngFor="let class of classes">
       <div class="col-md-6 col-lg-4">
@@ -10,7 +12,7 @@
             <h2><i class="fas fa-book"></i>{{class.Name}}</h2>
             <div class="exam-teacher"><i class="fas fa-user"></i>{{class.Code}}</div>
             <div class="exam-classroom"><i class="fas fa-map-marker-alt"></i>{{class.Classroom}}</div>
-            <div class="exam-time"><i class="fas fa-clock"></i>{{class.ClassDate | date:'EEEE HH:MM'}}</div>
+            <div class="exam-time"><i class="fas fa-clock"></i>{{class.ClassDate | date:'EEEE HH:mm'}}</div>
           </mat-card-content>
           <mat-card-footer></mat-card-footer>
         </mat-card>

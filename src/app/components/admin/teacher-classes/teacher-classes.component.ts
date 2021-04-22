@@ -32,6 +32,10 @@ export class TeacherClassesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getClasses();
+  }
+
+  getClasses(){
     this.displaySpinner = true;
     this.classesService.getTeacherClasses().subscribe(res => {
       this.classes = res;
@@ -48,11 +52,14 @@ export class TeacherClassesComponent implements OnInit {
 
   openNewClassDialog() {
     const dialogRef = this.dialog.open(AddClassDialogComponent, {
-      width: '400px'
+      width: '400px',
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if(result){
+        this.getClasses();
+      }
     });
   }
 

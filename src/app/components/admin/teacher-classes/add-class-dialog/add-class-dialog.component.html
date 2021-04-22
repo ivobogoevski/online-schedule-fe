@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Add New Class</h1>
+<h1 mat-dialog-title>{{data.class ? 'Edit Class' : 'Add New Class'}}</h1>
 <form [formGroup]="classFormGroup" (ngSubmit)="onSubmit()">
 <div mat-dialog-content>
     <mat-form-field appearance="legacy">
       <mat-label>Code</mat-label>
-      <input matInput placeholder="Please enter the class code" type="text" formControlName="Code">
+      <input matInput placeholder="Please enter the class code" [readonly]="data.class" type="text" formControlName="Code">
       <mat-error *ngIf="classFormGroup.get('Code').hasError('required')">
         Code is <strong>required</strong>
       </mat-error>
@@ -41,10 +41,35 @@
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Class date and time</mat-label>
-      <input matInput [owlDateTime]="dt1" readonly placeholder="Select the class date and time"
-      formControlName="ClassDate | date:'EEEE HH:MM'">
+      <input matInput [owlDateTime]="dt1" readonly hidden placeholder="Select the class date and time"
+      formControlName="ClassDate">
+      <input matInput readonly placeholder="Select the class date and time"
+      [value]="classFormGroup.get('ClassDate').value | date:'EEEE HH:mm'">
       <span [owlDateTimeTrigger]="dt1" class="date-time-toggle"><i class="fa fa-calendar"></i></span>
       <owl-date-time #dt1></owl-date-time>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Exercise Room</mat-label>
+      <input matInput placeholder="Please enter the exercise room" type="text" formControlName="ExerciseRoom">
+      <mat-error *ngIf="classFormGroup.get('ExerciseRoom').hasError('required')">
+        Exercise room is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Exercise date and time</mat-label>
+      <input matInput [owlDateTime]="dt2" readonly hidden placeholder="Select the exercise date and time"
+      formControlName="ExerciseDate">
+      <input matInput readonly placeholder="Select the exercise date and time"
+      [value]="classFormGroup.get('ExerciseDate').value | date:'EEEE HH:mm'">
+      <span [owlDateTimeTrigger]="dt2" class="date-time-toggle"><i class="fa fa-calendar"></i></span>
+      <owl-date-time #dt2></owl-date-time>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" *ngIf="data.class">
+      <mat-label>Notification</mat-label>
+      <textarea matInput placeholder="Leave empty if you don't want to send notification." formControlName="Notification" maxlength="255"></textarea>
+      <mat-error *ngIf="classFormGroup.get('Notification').hasError('maxLength')">
+        Maximum <strong>255</strong> characters
+      </mat-error>
     </mat-form-field>
 </div>
 <div mat-dialog-actions>

@@ -1,5 +1,7 @@
 export interface IExam {
-  Date: number;
+  ExamID: number;
+  ClassCode: string;
+  ExamDate: string;
   Classroom: string;
-  Type: number; // 1 = Exam, 2 = Colloquium
+  ExamType: number; // 1 = Exam, 2 = Colloquium
 }

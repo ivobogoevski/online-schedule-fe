@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Edit Notification</h1>
+<form [formGroup]="notificationFormGroup" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field appearance="legacy">
+      <mat-label>Notification</mat-label>
+      <textarea matInput placeholder="Please enter notification content" formControlName="Notification"></textarea>
+      <mat-error *ngIf="notificationFormGroup.get('Notification').hasError('required')">
+        Notification is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="notificationFormGroup.get('Notification').hasError('maxLength')">
+        Maximum <strong>255</strong> characters
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button color="primary" class="cancel-btn" type="button" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" class="submit-btn mr-2 mb-2" type="submit" [disabled]="displaySpinner">
+      <span [ngClass]="{'hide' : displaySpinner}">Save</span>
+      <i class="fas fa-spinner fa-spin" [ngClass]="{'hide' : !displaySpinner}"></i>
+    </button>
+  </div>
+</form>
