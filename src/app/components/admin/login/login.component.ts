@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   displaySpinner = false;
+  loginType = 'admin';
 
   constructor(
     private authService: AuthService,
@@ -28,23 +29,31 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.router.url.includes('superadmin')) {
+      this.loginType = 'superadmin';
+    }
   }
 
   onSubmit(){
     if (this.logInForm.valid){
       this.displaySpinner = true;
-      this.authService.teacherLogin(this.logInForm.get('email').value, this.logInForm.get('password').value).subscribe(
-        res => {
-          localStorage.setItem('os_auth', res.token);
-          localStorage.setItem('os_auth_refresh', res.refreshToken);
-          this.displaySpinner = false;
-          this.router.navigateByUrl('/admin/dashboard');
-        },
-        error => {
-          this.snackBar.open(error.error.message, null, {duration: 3000, panelClass: 'snack-error'});
-          this.displaySpinner = false;
-        }
-      );
+      if((this.loginType === 'superadmin' && this.logInForm.get('email').value === 'superadmin@fikt.com') || (this.loginType === 'admin' && this.logInForm.get('email').value !== 'superadmin@fikt.com')) {
+        this.authService.teacherLogin(this.logInForm.get('email').value, this.logInForm.get('password').value).subscribe(
+          res => {
+            localStorage.setItem('os_auth', res.token);
+            localStorage.setItem('os_auth_refresh', res.refreshToken);
+            this.displaySpinner = false;
+            this.router.navigateByUrl(`/${this.loginType}/dashboard`);
+          },
+          error => {
+            this.snackBar.open(error.error.message, null, {duration: 3000, panelClass: 'snack-error'});
+            this.displaySpinner = false;
+          }
+        );
+      } else {
+        this.snackBar.open('Invalid credentials', null, {duration: 3000, panelClass: 'snack-error'});
+        this.displaySpinner = false;
+      }
     }
   }
 

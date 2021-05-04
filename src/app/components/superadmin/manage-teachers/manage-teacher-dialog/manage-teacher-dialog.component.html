@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>{{data.teacher ? 'Edit Teacher' : 'Add New Teacher'}}
+  <button mat-mini-fab color="warn" title="Deactivate teacher" *ngIf="data.teacher && data.teacher.Active; else activateTeacher" class="float-right add-new" (click)="changeTeacherStatus(0)">
+    <i class="fas fa-trash-alt"></i>
+  </button>
+  <ng-template #activateTeacher>
+    <button mat-mini-fab color="primary" title="Activate teacher" class="float-right add-new" (click)="changeTeacherStatus(1)">
+      <i class="fas fa-check"></i>
+    </button>
+  </ng-template>
+</h1>
+<form [formGroup]="teacherFormGroup" (ngSubmit)="onSubmit()">
+<div mat-dialog-content>
+    <mat-form-field appearance="legacy">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Please enter teacher name" type="text" formControlName="Name">
+      <mat-error *ngIf="teacherFormGroup.get('Name').hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Please enter teacher email address" type="email" formControlName="Email" [errorStateMatcher]="matcher">
+      <mat-error *ngIf="teacherFormGroup.get('Email').hasError('email') && !teacherFormGroup.get('Email').hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="teacherFormGroup.get('Email').hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" *ngIf="!data.teacher">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Please enter password" type="password" formControlName="Password">
+      <mat-error *ngIf="teacherFormGroup.get('Password').hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Office</mat-label>
+      <input matInput placeholder="Please enter teacher office" type="text" formControlName="Office">
+      <mat-error *ngIf="teacherFormGroup.get('Office').hasError('required')">
+        Office is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" class="cancel-btn" type="button" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" class="submit-btn mr-2 mb-2" type="submit" [disabled]="displaySpinner">
+    <span [ngClass]="{'hide' : displaySpinner}">Save</span>
+    <i class="fas fa-spinner fa-spin" [ngClass]="{'hide' : !displaySpinner}"></i>
+  </button>
+</div>
+</form>

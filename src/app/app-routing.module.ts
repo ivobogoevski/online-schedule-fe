@@ -24,9 +24,9 @@ import { SuperadminComponent } from './components/superadmin/superadmin.componen
 
 const routes: Routes = [
   {path: 'superadmin/login', component: AdminLoginComponent},
-  {path: 'superadmin', redirectTo: 'superadmin/dashboard', pathMatch: 'full'},
+  {path: 'superadmin', redirectTo: 'superadmin/teachers', pathMatch: 'full'},
+  {path: 'superadmin/dashboard', redirectTo: 'superadmin/teachers', pathMatch: 'full'},
   {path: 'superadmin', component: SuperadminComponent, children: [
-    {path: 'dashboard', component: AdminDashboardComponent},
     {path: 'classes', component: ManageClassesComponent, canActivate: [TeacherAuthGuard]},
     {path: 'teachers', component: ManageTeachersComponent, canActivate: [TeacherAuthGuard]},
     {path: 'students', component: ManageStudentsComponent, canActivate: [TeacherAuthGuard]}

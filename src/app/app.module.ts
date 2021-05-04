@@ -18,6 +18,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ClassesComponent } from './components/classes/classes.component';
@@ -41,6 +44,7 @@ import { SuperadminComponent } from './components/superadmin/superadmin.componen
 import { ManageTeachersComponent } from './components/superadmin/manage-teachers/manage-teachers.component';
 import { ManageStudentsComponent } from './components/superadmin/manage-students/manage-students.component';
 import { ManageClassesComponent } from './components/superadmin/manage-classes/manage-classes.component';
+import { ManageTeacherDialogComponent } from './components/superadmin/manage-teachers/manage-teacher-dialog/manage-teacher-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +70,8 @@ import { ManageClassesComponent } from './components/superadmin/manage-classes/m
     SuperadminComponent,
     ManageTeachersComponent,
     ManageStudentsComponent,
-    ManageClassesComponent
+    ManageClassesComponent,
+    ManageTeacherDialogComponent
   ],
   imports: [
     FormsModule,
@@ -82,6 +87,9 @@ import { ManageClassesComponent } from './components/superadmin/manage-classes/m
     MatSnackBarModule,
     MatTabsModule,
     MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     DragDropModule,
     NgxSpinnerModule,
     MatRippleModule,
